@@ -1,8 +1,13 @@
-const prisma = require("../../config/prisma");
+
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const prisma = require('../../config/prisma');
+
 
 const login = async(req,res) =>{
     try {
-        const {name, email, password} =req.body;
+        const {name, email, password, userType} =req.body;
+
 
         //checking email validation
 
@@ -29,8 +34,12 @@ const login = async(req,res) =>{
                 name,
                 email,
                 password:hashesPassword,
+                userType:userType
+                
+
             }
         });
+        
 
         const accessToken = jwt.sign(
             {

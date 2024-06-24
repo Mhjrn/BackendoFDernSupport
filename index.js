@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const prisma = require('./config/prisma');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const loadRoutes = require('./router/router');
 const app = express();
 

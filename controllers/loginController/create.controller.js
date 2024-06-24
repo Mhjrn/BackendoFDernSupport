@@ -1,10 +1,12 @@
 const prisma = require("../../config/prisma");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
  
  const login = async(req, res)=>{
     try {
         const {email, password} = req.body;
-
+        console.log(email)
         const checkingEmail = await prisma.user.findUnique({
             where:{
                 email:email,
